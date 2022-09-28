@@ -6,6 +6,9 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const scoreEl = document.querySelector('#scoreEl')
+const startGameBtn = document.querySelector('#startGameBtn')
+const modalEl = document.querySelector('#modalEl')
+const bigScoreEl = document.querySelector('#bigScoreEl')
 
 //create player class and draw method
 class Player {
@@ -72,6 +75,8 @@ class Enemy {
   }
 }
 const friction = 0.99
+
+//create particle class
 class Particle {
   constructor(x, y, radius, color, velocity) {
     this.x = x
@@ -182,6 +187,8 @@ function animate() {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y)
     if (dist - enemy.radius - player.radius < 1) {
       cancelAnimationFrame(animationId)
+      modalEl.style.display = 'flex'
+      bigScoreEl.innerHTML = score
     }
 
     projectiles.forEach((projectile, projectileIndex) => {
@@ -245,6 +252,8 @@ addEventListener('click', (e) => {
   )
 })
 
-//call the animation function
-animate()
-spawnEnemies()
+startGameBtn.addEventListener('click', () => {
+  animate()
+  spawnEnemies()
+  modalEl.style.display = 'none'
+})
