@@ -5,6 +5,8 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
+const scoreEl = document.querySelector('#scoreEl')
+
 //create player class and draw method
 class Player {
   constructor(x, y, radius, color) {
@@ -142,6 +144,8 @@ function spawnEnemies() {
 
 //create an animation function
 let animationId
+let score = 0
+
 function animate() {
   animationId = requestAnimationFrame(animate)
   c.fillStyle = 'rgba(0, 0, 0, 0.1)'
@@ -201,6 +205,10 @@ function animate() {
           )
         }
         if (enemy.radius - 10 > 5) {
+          //increase the score
+          score += 100
+          scoreEl.innerHTML = score
+
           gsap.to(enemy, {
             radius: enemy.radius - 10
           })
@@ -208,6 +216,10 @@ function animate() {
             projectiles.splice(projectileIndex, 1)
           }, 0)
         } else {
+          //remove from scene altogether
+          score += 250
+          scoreEl.innerHTML = score
+
           setTimeout(() => {
             enemies.splice(index, 1)
             projectiles.splice(projectileIndex, 1)

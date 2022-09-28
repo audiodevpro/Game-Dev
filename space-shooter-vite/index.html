@@ -9,6 +9,9 @@
       integrity="sha512-gsEItzcNkWxfxHjr4BaEZAd9YuRWYjxnj7c/yukcZ0/nWehUb5TjJNyyv1ApCU2DFH/qgw+stFZHPOKnoQnIuQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"></script>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet" />
     <script defer type="module" src="/main.js"></script>
     <title>Space Shooter</title>
   </head>
@@ -18,6 +21,9 @@
         margin: 0;
       }
     </style>
+    <div class="fixed text-white text-sm ml-2 mt-1 select-none">
+      <span>Score: </span><span id="scoreEl">0</span>
+    </div>
     <canvas></canvas>
   </body>
 </html>
