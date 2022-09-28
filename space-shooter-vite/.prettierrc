@@ -1,0 +1,16 @@
+{
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none",
+    "overrides": [
+      {
+        "files": ["**/*.css", "**/*.scss", "**/*.html"],
+        "options": {
+          "singleQuote": false
+        }
+      }
+    ]
+  }
