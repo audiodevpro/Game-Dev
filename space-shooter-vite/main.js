@@ -112,11 +112,21 @@ const x = canvas.width / 2
 const y = canvas.height / 2
 
 //define new player and draw it on the screen
-const player = new Player(x, y, 10, 'white')
+let player = new Player(x, y, 10, 'white')
 
-const projectiles = []
-const enemies = []
-const particles = []
+let projectiles = []
+let enemies = []
+let particles = []
+
+function init() {
+  player = new Player(x, y, 10, 'white')
+  projectiles = []
+  enemies = []
+  particles = []
+  score = 0
+  scoreEl.innerHTML = score
+  bigScoreEl.innerHTML = score
+}
 
 //create enemies
 function spawnEnemies() {
@@ -253,6 +263,7 @@ addEventListener('click', (e) => {
 })
 
 startGameBtn.addEventListener('click', () => {
+  init()
   animate()
   spawnEnemies()
   modalEl.style.display = 'none'
